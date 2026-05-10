@@ -17,9 +17,9 @@ public class LevelsFromArmorAndTrinkets extends LevelService {
         if (compatible(equipment.getChestplate())) level += equipment.getChestplateEnchantments().getOrDefault(customEnchant, 0);
         if (compatible(equipment.getLeggings())) level += equipment.getLeggingsEnchantments().getOrDefault(customEnchant, 0);
         if (compatible(equipment.getBoots())) level += equipment.getBootsEnchantments().getOrDefault(customEnchant, 0);
-        for (ItemStack i : equipment.getMiscEquipment()){
-            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
-        }
+//        for (ItemStack i : equipment.getMiscEquipment()){
+//            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
+//        }
         return level;
     }
 }

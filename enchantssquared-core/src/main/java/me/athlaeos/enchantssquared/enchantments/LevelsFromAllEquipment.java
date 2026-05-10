@@ -19,9 +19,9 @@ public class LevelsFromAllEquipment extends LevelService {
         if (compatible(equipment.getBoots())) level += equipment.getBootsEnchantments().getOrDefault(customEnchant, 0);
         if (compatible(equipment.getMainHand())) level += equipment.getMainHandEnchantments().getOrDefault(customEnchant, 0);
         if (compatible(equipment.getOffHand())) level += equipment.getOffHandEnchantments().getOrDefault(customEnchant, 0);
-        for (ItemStack i : equipment.getMiscEquipment()){
-            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
-        }
+//        for (ItemStack i : equipment.getMiscEquipment()){
+//            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
+//        }
         return level;
     }
 }

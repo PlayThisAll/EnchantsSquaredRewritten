@@ -22,11 +22,11 @@ public class Levels1IfPresent extends LevelService {
                 getIfCompatible(equipment.getLeggings(), equipment.getLeggingsEnchantments().getOrDefault(customEnchant, 0)) > 0 ||
                 getIfCompatible(equipment.getBoots(), equipment.getBootsEnchantments().getOrDefault(customEnchant, 0)) > 0 ||
                 getIfCompatible(equipment.getMainHand(), equipment.getMainHandEnchantments().getOrDefault(customEnchant, 0)) > 0 ||
-                getIfCompatible(equipment.getOffHand(), equipment.getOffHandEnchantments().getOrDefault(customEnchant, 0)) > 0 ||
+                getIfCompatible(equipment.getOffHand(), equipment.getOffHandEnchantments().getOrDefault(customEnchant, 0)) > 0 /* ||
                 equipment.getMiscEquipmentEnchantments().keySet().stream().anyMatch(i -> {
                     Map<CustomEnchant, Integer> enchants = equipment.getMiscEquipmentEnchantments().get(i);
                     return getIfCompatible(i, enchants.getOrDefault(customEnchant, 0)) > 0;
-                }))
+                }) */)
             return 1;
         return 0;
     }

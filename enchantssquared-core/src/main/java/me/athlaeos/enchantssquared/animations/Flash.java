@@ -1,6 +1,8 @@
 package me.athlaeos.enchantssquared.animations;
 
+import me.athlaeos.enchantssquared.domain.MinecraftVersion;
 import me.athlaeos.enchantssquared.domain.Version;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 
@@ -26,7 +28,10 @@ public class Flash extends Animation{
         if (l.getWorld() == null) return;
         if (Version.currentVersionOrNewerThan(Version.MINECRAFT_1_19))
             l.getWorld().spawnParticle(Particle.FLASH, l, 0);
-        else
-            l.getWorld().spawnParticle(Particle.FLASH, l, 0, size);
+        else {
+            if (MinecraftVersion.currentVersionNewerThan(MinecraftVersion.MINECRAFT_1_21_9)) {
+                l.getWorld().spawnParticle(Particle.FLASH, l, 0, Color.WHITE);
+            } else l.getWorld().spawnParticle(Particle.FLASH, l, 0, size);
+        }
     }
 }

@@ -22,9 +22,9 @@ public class LevelsFromEntireInventory extends LevelService {
                 if (compatible(i)) level += CustomEnchantManager.getInstance().getEnchantStrength(i, customEnchant.getType());
             }
         }
-        for (ItemStack i : equipment.getMiscEquipment()){
-            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
-        }
+//        for (ItemStack i : equipment.getMiscEquipment()){
+//            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
+//        }
         return level;
     }
 }

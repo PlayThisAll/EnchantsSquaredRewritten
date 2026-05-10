@@ -23,10 +23,10 @@ public class Levels1IfPresentInInventory extends LevelService {
             }
             if (level > 0) return 1;
         }
-        for (ItemStack i : equipment.getMiscEquipment()){
-            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
-            if (level > 0) return 1;
-        }
+//        for (ItemStack i : equipment.getMiscEquipment()){
+//            if (compatible(i)) level += equipment.getMiscEquipmentEnchantments().getOrDefault(i, new HashMap<>()).getOrDefault(customEnchant, 0);
+//            if (level > 0) return 1;
+//        }
         return level;
     }
 }
