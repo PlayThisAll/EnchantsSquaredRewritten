@@ -191,6 +191,7 @@ public class IncreasePotionPotency extends CustomEnchant implements TriggerOnPot
                     entity,
                     e.getOldEffect(),
                     enhancedEffect,
+                    null,
                     EntityPotionEffectEvent.Cause.POTION_DRINK,
                     e.getOldEffect() == null ? EntityPotionEffectEvent.Action.ADDED : EntityPotionEffectEvent.Action.CHANGED,
                     e.getOldEffect() != null);
