@@ -80,7 +80,7 @@ public final class EnchantsSquared extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        if (!setupNMS()){
+        if (!setupNMS() && false){ //will have to figure out a proper way to add versions tbh
             logSevere("This version of Minecraft is not compatible with EnchantsSquared. Sorry!");
             getServer().getPluginManager().disablePlugin(this);
             return;
