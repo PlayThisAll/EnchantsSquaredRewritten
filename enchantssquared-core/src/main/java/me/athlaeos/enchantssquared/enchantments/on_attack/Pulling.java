@@ -87,7 +87,7 @@ public class Pulling extends CustomEnchant implements TriggerOnAttackEnchantment
                 if (victim instanceof Player && pull_sound != null) ((Player) victim).playSound(victim.getLocation(), pull_sound, 1F, 1F);
                 if (realAttacker instanceof Player && pull_sound != null) ((Player) realAttacker).playSound(realAttacker.getLocation(), pull_sound, 1F, 1F);
 
-                AttributeInstance attribute = victim.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
+                AttributeInstance attribute = victim.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
                 double strengthWithResistance = strength;
                 if (attribute != null) strengthWithResistance *= Math.max(0, 1 - attribute.getValue());
                 victim.setVelocity(victim.getVelocity().add(new Vector(
