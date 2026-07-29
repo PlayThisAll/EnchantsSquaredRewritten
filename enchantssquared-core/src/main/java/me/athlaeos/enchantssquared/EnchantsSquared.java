@@ -82,7 +82,7 @@ public final class EnchantsSquared extends JavaPlugin {
         plugin = this;
         if (!setupNMS()){
             logSevere("This version of Minecraft is not compatible with EnchantsSquared. Sorry!");
-            //getServer().getPluginManager().disablePlugin(this);
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
