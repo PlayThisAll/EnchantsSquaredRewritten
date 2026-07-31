@@ -188,38 +188,17 @@ public class IncreasePotionPotency extends CustomEnchant implements TriggerOnPot
             originalDuration = (int) Math.floor(originalDuration * durationMultiplier);
 
             PotionEffect enhancedEffect = new PotionEffect(newEffect.getType(), originalDuration, originalAmplifier, false, true, true);
-            EntityPotionEffectEvent event;
-
-            try {
-                event = EntityPotionEffectEvent.class
-                    .getConstructor(
-                        LivingEntity.class,
-                        PotionEffect.class,
-                        PotionEffect.class,
-                        org.bukkit.entity.Entity.class,
-                        EntityPotionEffectEvent.Cause.class,
-                        EntityPotionEffectEvent.Action.class,
-                        boolean.class
-                    ).newInstance(
-                        entity,
-                        e.getOldEffect(),
-                        enhancedEffect,
-                        null,
-                        EntityPotionEffectEvent.Cause.POTION_DRINK,
-                        e.getOldEffect() == null
-                            ? EntityPotionEffectEvent.Action.ADDED
-                            : EntityPotionEffectEvent.Action.CHANGED,
-                        e.getOldEffect() != null
-                    );
-            } catch (Exception ex) {
-                event = new EntityPotionEffectEvent(
+            EntityPotionEffectEvent event = new EntityPotionEffectEvent(
                     entity,
                     e.getOldEffect(),
                     enhancedEffect,
+                    null,
                     EntityPotionEffectEvent.Cause.POTION_DRINK,
-                    e.getOldEffect() == null ? EntityPotionEffectEvent.Action.ADDED : EntityPotionEffectEvent.Action.CHANGED,
-                    e.getOldEffect() != null);
-            }
+                    e.getOldEffect() == null
+                        ? EntityPotionEffectEvent.Action.ADDED
+                        : EntityPotionEffectEvent.Action.CHANGED,
+                    e.getOldEffect() != null
+                );
             
             excludedPlayers.add(entity.getUniqueId());
             EnchantsSquared.getPlugin().getServer().getPluginManager().callEvent(event);
