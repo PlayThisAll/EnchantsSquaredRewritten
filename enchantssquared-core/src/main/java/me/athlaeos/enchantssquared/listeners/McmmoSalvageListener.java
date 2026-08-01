@@ -1,5 +1,6 @@
 package me.athlaeos.enchantssquared.listeners;
 
+import me.athlaeos.enchantssquared.config.ConfigManager;
 import me.athlaeos.enchantssquared.enchantments.CustomEnchant;
 import me.athlaeos.enchantssquared.managers.CustomEnchantManager;
 import me.athlaeos.enchantssquared.utility.ChatUtils;
@@ -27,6 +28,8 @@ import com.gmail.nossr50.util.skills.RankUtils;
 
 public class McmmoSalvageListener implements Listener {
     //code pretty much ripped from McMMO because they have it working and I figured I could as well
+    private final String salvageFail = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
+    private final String salvagePartial = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
 
     @EventHandler
     public void onHandleSalvage(McMMOPlayerSalvageCheckEvent event){
@@ -64,12 +67,10 @@ public class McmmoSalvageListener implements Listener {
         
         
         if (CustomEnchantManager.getInstance().getItemsEnchantsFromPDC(book).isEmpty()) {
-            message = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
-            player.sendMessage(ChatUtils.chat(message));
+            player.sendMessage(ChatUtils.chat(salvageFail));
             return;
         } else if(downgraded) {
-            message = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_partial");
-            player.sendMessage(ChatUtils.chat(message));
+            player.sendMessage(ChatUtils.chat(salvagePartial));
         };
 
 
