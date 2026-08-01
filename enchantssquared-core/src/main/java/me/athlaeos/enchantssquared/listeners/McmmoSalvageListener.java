@@ -29,7 +29,7 @@ import com.gmail.nossr50.util.skills.RankUtils;
 public class McmmoSalvageListener implements Listener {
     //code pretty much ripped from McMMO because they have it working and I figured I could as well
     private final String salvageFail = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
-    private final String salvagePartial = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
+    private final String salvagePartial = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_partial");
 
     @EventHandler
     public void onHandleSalvage(McMMOPlayerSalvageCheckEvent event){
