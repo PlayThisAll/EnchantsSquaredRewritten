@@ -85,7 +85,7 @@ enchant_description: "Used to enchant any item with any custom enchant"
 #salvage was unsuccesful
 salvage_fail: "You were unable to extract specialized knowledge from this item."
 #salvage was succesful, but items were downgraded
-salvage_fail: "You were only able to extract some of the specialized knowledge from this item."
+salvage_partial: "You were only able to extract some of the specialized knowledge from this item."
 
 # Description message within the "/es help" command of the help command
 help_description: "Shows a summary of all commands for EnchantsSquared"

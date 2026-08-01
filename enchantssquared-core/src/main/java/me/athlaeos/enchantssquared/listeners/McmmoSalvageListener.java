@@ -2,6 +2,7 @@ package me.athlaeos.enchantssquared.listeners;
 
 import me.athlaeos.enchantssquared.enchantments.CustomEnchant;
 import me.athlaeos.enchantssquared.managers.CustomEnchantManager;
+import me.athlaeos.enchantssquared.utility.ChatUtils;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -61,8 +62,18 @@ public class McmmoSalvageListener implements Listener {
             }
         }
         
-        if (CustomEnchantManager.getInstance().getItemsEnchantsFromPDC(book).isEmpty()) return;
+        
+        if (CustomEnchantManager.getInstance().getItemsEnchantsFromPDC(book).isEmpty()) {
+            message = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_fail");
+            player.sendMessage(ChatUtils.chat(message));
+            return;
+        } else if(downgraded) {
+            message = ConfigManager.getInstance().getConfig("translations.yml").get().getString("salvage_partial");
+            player.sendMessage(ChatUtils.chat(message));
+        };
 
+
+        
         player.getInventory().addItem(book);
     }
 }
