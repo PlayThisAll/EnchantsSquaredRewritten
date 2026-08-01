@@ -82,6 +82,11 @@ enchant_warning: "&cUsing very high enchant levels may cause extreme lag or be u
 # Description message within the "/es help" command of the enchant command
 enchant_description: "Used to enchant any item with any custom enchant"
 
+#salvage was unsuccesful
+salvage_fail: "You were unable to extract specialized knowledge from this item."
+#salvage was succesful, but items were downgraded
+salvage_fail: "You were only able to extract some of the specialized knowledge from this item."
+
 # Description message within the "/es help" command of the help command
 help_description: "Shows a summary of all commands for EnchantsSquared"
 

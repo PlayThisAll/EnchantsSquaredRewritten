@@ -4,8 +4,8 @@ main: me.athlaeos.enchantssquared.EnchantsSquared
 api-version: 1.14
 website: https://discord.gg/dUwtmYV
 softdepend: [ ValhallaMMO, ValhallaTrinkets, WorldGuard, Jobs ]
-authors: [ Athlaeos ]
-description: Now rewritten, EnchantsSquared is a plugin adding in many new enchantments with the intent to mimic vanilla as closely as possible. With special ValhallaMMO integration!
+authors: [ Athlaeos, Prototer ]
+description: Now rewritten, EnchantsSquared is a plugin adding in many new enchantments with the intent to mimic vanilla as closely as possible.\nThis fork has been made specially for cytocraft, comes with McMMO integration and various bugfixes!
 
 commands:
   enchantssquared:
