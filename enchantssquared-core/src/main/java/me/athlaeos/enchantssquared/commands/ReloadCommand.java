@@ -2,6 +2,7 @@ package me.athlaeos.enchantssquared.commands;
 
 import me.athlaeos.enchantssquared.config.ConfigManager;
 import me.athlaeos.enchantssquared.managers.CustomEnchantManager;
+import me.athlaeos.enchantssquared.managers.RegularIntervalEnchantmentClockManager;
 import me.athlaeos.enchantssquared.utility.ChatUtils;
 import org.bukkit.command.CommandSender;
 
@@ -24,6 +25,7 @@ public class ReloadCommand implements Command {
 
 		CommandManager.getInstance().reload();
 		CustomEnchantManager.getInstance().reload();
+		RegularIntervalEnchantmentClockManager.startClock();
 
 		sender.sendMessage(ChatUtils.chat(reload_successful));
 		return true;
