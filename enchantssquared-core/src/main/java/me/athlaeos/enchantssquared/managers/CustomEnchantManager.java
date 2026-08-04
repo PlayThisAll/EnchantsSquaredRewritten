@@ -141,7 +141,7 @@ public class CustomEnchantManager {
     public Collection<CustomEnchant> getCompatibleEnchants(ItemStack item, GameMode combinedIn){
         Collection<CustomEnchant> possibleEnchants = new HashSet<>();
         if (ItemUtils.isAirOrNull(item)) return possibleEnchants;
-        if (item.getType() == Material.BOOK || item.getType() == Material.ENCHANTED_BOOK) return allEnchants.values();
+        if (item.getType() == Material.BOOK || item.getType() == Material.ENCHANTED_BOOK) return new HashSet<>(allEnchants.values());
         Map<CustomEnchant, Integer> existingCustomEnchantments = getItemsEnchantsFromPDC(item);
         for (CustomEnchant e : allEnchants.values()){
             // checks if the item has any conflicting custom enchantments. This isn't done with hasCustomEnchantment()
