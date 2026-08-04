@@ -54,6 +54,7 @@ public final class EnchantsSquared extends JavaPlugin {
     private MenuListener menuListener = null;
     private ItemDamageListener itemDamageListener = null;
     private McmmoSalvageListener mcmmoSalvageListener = null;
+    private McmmoArcaneFishingListener mcmmoArcaneFishingListener = null;
 
     @Override
     public void onLoad() {
@@ -117,6 +118,7 @@ public final class EnchantsSquared extends JavaPlugin {
         itemDamageListener = registerListener(new ItemDamageListener());
         projectileListener = registerListener(new ProjectileListener());
         mcmmoSalvageListener = registerListener(new McmmoSalvageListener());
+        mcmmoArcaneFishingListener = registerListener(new McmmoArcaneFishingListener());
         registerListener(new HandSwitchListener());
         registerListener(new LeaveJoinListener());
         registerListener(new ArmorSwitchListener());
@@ -281,6 +283,10 @@ public final class EnchantsSquared extends JavaPlugin {
 
     public McmmoSalvageListener getMcmmoSalvageListener() {
         return mcmmoSalvageListener;
+    }
+
+    public McmmoArcaneFishingListener getMcmmoArcaneFishingListener() {
+        return mcmmoArcaneFishingListener;
     }
 
     public static boolean isGrindstonesEnabled() {
