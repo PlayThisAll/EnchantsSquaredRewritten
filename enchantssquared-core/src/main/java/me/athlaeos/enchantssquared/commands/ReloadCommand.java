@@ -1,5 +1,6 @@
 package me.athlaeos.enchantssquared.commands;
 
+import me.athlaeos.enchantssquared.EnchantsSquared;
 import me.athlaeos.enchantssquared.config.ConfigManager;
 import me.athlaeos.enchantssquared.managers.CustomEnchantManager;
 import me.athlaeos.enchantssquared.managers.RegularIntervalEnchantmentClockManager;
@@ -25,7 +26,7 @@ public class ReloadCommand implements Command {
 
 		CommandManager.getInstance().reload();
 		CustomEnchantManager.getInstance().reload();
-		RegularIntervalEnchantmentClockManager.startClock();
+		EnchantsSquared.getPlugin().onEnable();
 
 		sender.sendMessage(ChatUtils.chat(reload_successful));
 		return true;

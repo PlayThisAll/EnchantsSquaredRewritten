@@ -117,8 +117,10 @@ public final class EnchantsSquared extends JavaPlugin {
         menuListener = registerListener(new MenuListener());
         itemDamageListener = registerListener(new ItemDamageListener());
         projectileListener = registerListener(new ProjectileListener());
-        mcmmoSalvageListener = registerListener(new McmmoSalvageListener());
-        mcmmoArcaneFishingListener = registerListener(new McmmoArcaneFishingListener());
+        if(isMcMMOHooked()){
+            mcmmoSalvageListener = registerListener(new McmmoSalvageListener());
+            mcmmoArcaneFishingListener = registerListener(new McmmoArcaneFishingListener());
+        }
         registerListener(new HandSwitchListener());
         registerListener(new LeaveJoinListener());
         registerListener(new ArmorSwitchListener());
@@ -174,6 +176,10 @@ public final class EnchantsSquared extends JavaPlugin {
 
     public static EnchantsSquared getPlugin(){
         return plugin;
+    }
+
+    public static boolean isMcMMOHooked() {
+        return mcMMOHooked;
     }
 
     public static boolean isValhallaHooked() {
