@@ -13,6 +13,7 @@ import me.athlaeos.enchantssquared.utility.Utils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
@@ -26,6 +27,8 @@ import org.bukkit.util.Vector;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
+
+import java.lang.Math;
 
 public class RapidShot extends CustomEnchant implements TriggerOnProjectileEventEnchantment, TriggerOnAttackEnchantment {
     private final YamlConfiguration config;
@@ -122,15 +125,16 @@ public class RapidShot extends CustomEnchant implements TriggerOnProjectileEvent
                 @Override
                 public void run() {
                     Vector direction = shooter.getEyeLocation().getDirection().normalize().multiply(speed);
-                    Arrow newArrow = shooter.launchProjectile(arrow.getClass(), direction);
-                    newArrow.setDamage(reducedDamage);
-                    if (arrows > 1) removeImmunityFrames(newArrow); // last arrow should not be exempt from immunity frame removal
+                    //Arrow newArrow = shooter.launchProjectile(arrow.getClass(), direction);
+                    Arrow newArrow = shootRapidArrows(arrow, direction, e.getBow(), arrows, reducedDamage, shooter);
+                    //newArrow.setDamage(reducedDamage);
+                    //if (arrows > 1) removeImmunityFrames(newArrow); // last arrow should not be exempt from immunity frame removal
                     EntityShootBowEvent event = new EntityShootBowEvent(shooter, e.getBow(), e.getConsumable(), newArrow, e.getHand(), e.getForce(), false);
                     EnchantsSquared.getPlugin().getServer().getPluginManager().callEvent(event);
                     if (!event.isCancelled()) {
                         newArrow.setPickupStatus(AbstractArrow.PickupStatus.CREATIVE_ONLY);
                         shooter.getWorld().playSound(shooter.getLocation(), Sound.ENTITY_ARROW_SHOOT, 1F, 1F);
-                    } else {
+                    } else {    
                         newArrow.remove();
                     }
 
@@ -142,6 +146,32 @@ public class RapidShot extends CustomEnchant implements TriggerOnProjectileEvent
                 }
             }.runTaskTimer(EnchantsSquared.getPlugin(), shot_delay, shot_delay);
         }
+    }
+    //TO DO: make it so that ricoshet from 
+    private Arrow shootRapidArrows(Arrow arrow, Vector direction, ItemStack bow, int arrows, double reducedDamage, LivingEntity shooter) {
+        int multishotLevel = bow.getEnchantmentLevel(Enchantment.MULTISHOT);
+        Vector forward = direction.clone().normalize();
+        Vector right = new Vector(0, 1, 0).crossProduct(forward).normalize();
+        Vector localUp = forward.clone().crossProduct(right).normalize();
+        Arrow returnArrow = null;
+        for (double i = -1 * multishotLevel; i <= multishotLevel; i++) {
+            double degree = i * 10;
+            Arrow newArrow = null;
+            if (degree == 0) {
+                returnArrow = shooter.launchProjectile(arrow.getClass(), direction);
+                newArrow = returnArrow;
+            } else {
+                newArrow = shooter.launchProjectile(arrow.getClass(), direction.clone().rotateAroundAxis(localUp, Math.toRadians(degree)));
+            }
+            newArrow.setDamage(reducedDamage);
+            newArrow.setCritical(arrow.isCritical());
+            newArrow.setPierceLevel(arrow.getPierceLevel());
+            newArrow.setFireTicks(arrow.getFireTicks());
+            newArrow.setBasePotionType(arrow.getBasePotionType());
+            newArrow.setWeapon(bow);
+            if (arrows > 1) removeImmunityFrames(newArrow); // last arrow should not be exempt from immunity frame removal
+        }
+        return returnArrow;
     }
 
     @Override
