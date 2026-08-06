@@ -55,6 +55,7 @@ public final class EnchantsSquared extends JavaPlugin {
     private ItemDamageListener itemDamageListener = null;
     private McmmoSalvageListener mcmmoSalvageListener = null;
     private McmmoArcaneFishingListener mcmmoArcaneFishingListener = null;
+    private McmmoRepairListener mcmmoRepairListener = null;
 
     @Override
     public void onLoad() {
@@ -120,6 +121,7 @@ public final class EnchantsSquared extends JavaPlugin {
         if(isMcMMOHooked()){
             mcmmoSalvageListener = registerListener(new McmmoSalvageListener());
             mcmmoArcaneFishingListener = registerListener(new McmmoArcaneFishingListener());
+            mcmmoRepairListener = registerListener(new McmmoRepairListener());
         }
         registerListener(new HandSwitchListener());
         registerListener(new LeaveJoinListener());

@@ -86,6 +86,12 @@ enchant_description: "Used to enchant any item with any custom enchant"
 salvage_fail: "&cYou were unable to extract specialized knowledge from this item."
 #salvage was succesful, but items were downgraded
 salvage_partial: "&cYou were only able to extract some of the specialized knowledge from this item."
+#repair was unsuccseful
+repair_fail: "&cAdvanced arcane power has completely left the item."
+#repair was succesful, but items were downgraded
+repair_partial: "Advanced arcane power has decreased for the item."
+#repair was succesful
+repair_success: "&aYou have sustained the advanced arcane energies within the item."
 
 # Description message within the "/es help" command of the help command
 help_description: "Shows a summary of all commands for EnchantsSquared"

@@ -147,7 +147,7 @@ public class RapidShot extends CustomEnchant implements TriggerOnProjectileEvent
             }.runTaskTimer(EnchantsSquared.getPlugin(), shot_delay, shot_delay);
         }
     }
-    //TO DO: make it so that ricoshet from 
+    
     private Arrow shootRapidArrows(Arrow arrow, Vector direction, ItemStack bow, int arrows, double reducedDamage, LivingEntity shooter) {
         int multishotLevel = bow.getEnchantmentLevel(Enchantment.MULTISHOT);
         Vector forward = direction.clone().normalize();
